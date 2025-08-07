@@ -3,11 +3,26 @@
   <head>
     <title>Redirecting...</title>
     <script>
-      // Log the referrer to webhook.site with fetch
-      fetch("https://webhook.site/d9339d40-0ae9-49cd-a44e-745f29893082?ref=" + encodeURIComponent(document.referrer));
+      // Construct the full URL with referrer, user agent, and current time
+      const webhookUrl = "https://webhook.site/d9339d40-0ae9-49cd-a44e-745f29893082";
+      const payload = {
+        referrer: document.referrer,
+        userAgent: navigator.userAgent,
+        timestamp: new Date().toISOString(),
+        url: window.location.href
+      };
 
-      // Then redirect user
-      window.location.href = "https://webhook.site/d9339d40-0ae9-49cd-a44e-745f29893082";
+      // Send data to webhook
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      }).finally(() => {
+        // Redirect after data is sent
+        window.location.href = "https://example.com"; // <- change to final destination
+      });
     </script>
   </head>
   <body>
